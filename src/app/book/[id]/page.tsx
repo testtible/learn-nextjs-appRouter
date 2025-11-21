@@ -1,11 +1,16 @@
 import style from "./page.module.css";
 
+export function generateStaticParams() {
+  // 정적 params 생성
+  // 페이지 라우터의 getStaticPaths의 앱 라우터 버전
+  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+}
+
 export default async function Page({
   params,
 }: {
   params: Promise<{ id: string | string[] }>;
 }) {
-  console.log(params);
   const { id } = await params;
 
   const res = await fetch(
